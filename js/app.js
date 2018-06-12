@@ -102,6 +102,13 @@ function simulateAndDisplayStoreData(location,id){
     li.textContent=listString;
     locationlist.appendChild(li);
   }
+
+  var totalLI = document.createElement("li");
+  locationlist.appendChild(totalLI);
+
+  var totalStrong = document.createElement("strong");
+  totalStrong.textContent = "Total: " + cookieTotal;
+  totalLI.appendChild(totalStrong);
 }
 
 simulateAndDisplayStoreData(iowaCity1,"IC1");
