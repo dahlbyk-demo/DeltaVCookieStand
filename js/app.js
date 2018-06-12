@@ -75,22 +75,11 @@ var northLiberty1={
   },
 };
 
-function simlulate() {
-  iowaCity1.numOfCust();
-  iowaCity1.cookiesPurchased();
-  iowaCity2.numOfCust();
-  iowaCity2.cookiesPurchased();
-  iowaCity3.numOfCust();
-  iowaCity3.cookiesPurchased();
-  coralville1.numOfCust();
-  coralville1.cookiesPurchased();
-  northLiberty1.numOfCust();
-  northLiberty1.cookiesPurchased();
-}
-
 var hours=["6am","7am","8am","9am","10am","11am","12pm","1pm","2pm","3pm","4pm","5pm","6pm","7pm","8pm"];
 
 function storeData(location,id){
+  location.cookiesPurchased();
+
   var locationlist=document.getElementById(id);
   for(var i = 0; i < location.hourlyArray.length; i++){
     var li=document.createElement("li");
@@ -100,7 +89,6 @@ function storeData(location,id){
   }
 }
 
-simlulate();
 storeData(iowaCity1,"IC1");
 storeData(iowaCity2,"IC2");
 storeData(iowaCity3,"IC3");
