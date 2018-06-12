@@ -92,9 +92,9 @@ var hours=["6am","7am","8am","9am","10am","11am","12pm","1pm","2pm","3pm","4pm",
 
 function storeData(location,id){
   var locationlist=document.getElementById(id);
-  for(var liIndex=0; liIndex<location.hourlyArray.length; liIndex++){
+  for(var i = 0; i < location.hourlyArray.length; i++){
     var li=document.createElement("li");
-    var listString=hours[liIndex]+": "+location.hourlyArray[liIndex]+" cookies.";
+    var listString=hours[i] + ": " + location.hourlyArray[i] + " cookies.";
     li.textContent=listString;
     locationlist.appendChild(li);
   }
