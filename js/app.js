@@ -84,9 +84,15 @@ function simulateAndDisplayStoreData(location,id){
   // Find parent <ul> for this location by id
   var locationlist=document.getElementById(id);
 
+  // Let's also count total cookies
+  var cookieTotal = 0;
+
   // For each hour that the store is open...
   for(var i = 0; i < location.hourlyArray.length; i++){
     var cookiesForThisHour = location.hourlyArray[i];
+
+    cookieTotal = cookieTotal + cookiesForThisHour;
+    console.log({ cookiesForThisHour, cookieTotal });
 
     // Build string to display in the <li>
     var listString=hours[i] + ": " + cookiesForThisHour + " cookies.";
