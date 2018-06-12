@@ -77,20 +77,29 @@ var northLiberty1={
 
 var hours=["6am","7am","8am","9am","10am","11am","12pm","1pm","2pm","3pm","4pm","5pm","6pm","7pm","8pm"];
 
-function storeData(location,id){
+function simulateAndDisplayStoreData(location,id){
+  // Run our cookies-per-hour simulation!
   location.cookiesPurchased();
 
+  // Find parent <ul> for this location by id
   var locationlist=document.getElementById(id);
+
+  // For each hour that the store is open...
   for(var i = 0; i < location.hourlyArray.length; i++){
+    var cookiesForThisHour = location.hourlyArray[i];
+
+    // Build string to display in the <li>
+    var listString=hours[i] + ": " + cookiesForThisHour + " cookies.";
+
+    // Create <li> with that string, and add to <ul>
     var li=document.createElement("li");
-    var listString=hours[i] + ": " + location.hourlyArray[i] + " cookies.";
     li.textContent=listString;
     locationlist.appendChild(li);
   }
 }
 
-storeData(iowaCity1,"IC1");
-storeData(iowaCity2,"IC2");
-storeData(iowaCity3,"IC3");
-storeData(coralville1,"CV1");
-storeData(northLiberty1,"NL1");
+simulateAndDisplayStoreData(iowaCity1,"IC1");
+simulateAndDisplayStoreData(iowaCity2,"IC2");
+simulateAndDisplayStoreData(iowaCity3,"IC3");
+simulateAndDisplayStoreData(coralville1,"CV1");
+simulateAndDisplayStoreData(northLiberty1,"NL1");
