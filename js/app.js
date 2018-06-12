@@ -75,34 +75,44 @@ var northLiberty1={
   },
 };
 
-function simlulate() {
-  iowaCity1.numOfCust();
-  iowaCity1.cookiesPurchased();
-  iowaCity2.numOfCust();
-  iowaCity2.cookiesPurchased();
-  iowaCity3.numOfCust();
-  iowaCity3.cookiesPurchased();
-  coralville1.numOfCust();
-  coralville1.cookiesPurchased();
-  northLiberty1.numOfCust();
-  northLiberty1.cookiesPurchased();
-}
-
 var hours=["6am","7am","8am","9am","10am","11am","12pm","1pm","2pm","3pm","4pm","5pm","6pm","7pm","8pm"];
 
-function storeData(location,id){
+function simulateAndDisplayStoreData(location,id){
+  // Run our cookies-per-hour simulation!
+  location.cookiesPurchased();
+
+  // Find parent <ul> for this location by id
   var locationlist=document.getElementById(id);
-  for(var liIndex=0; liIndex<location.hourlyArray.length; liIndex++){
+
+  // Let's also count total cookies
+  var cookieTotal = 0;
+
+  // For each hour that the store is open...
+  for(var i = 0; i < location.hourlyArray.length; i++){
+    var cookiesForThisHour = location.hourlyArray[i];
+
+    cookieTotal = cookieTotal + cookiesForThisHour;
+    console.log({ cookiesForThisHour, cookieTotal });
+
+    // Build string to display in the <li>
+    var listString=hours[i] + ": " + cookiesForThisHour + " cookies.";
+
+    // Create <li> with that string, and add to <ul>
     var li=document.createElement("li");
-    var listString=hours[liIndex]+": "+location.hourlyArray[liIndex]+" cookies.";
     li.textContent=listString;
     locationlist.appendChild(li);
   }
+
+  var totalLI = document.createElement("li");
+  locationlist.appendChild(totalLI);
+
+  var totalStrong = document.createElement("strong");
+  totalStrong.textContent = "Total: " + cookieTotal;
+  totalLI.appendChild(totalStrong);
 }
 
-simlulate();
-storeData(iowaCity1,"IC1");
-storeData(iowaCity2,"IC2");
-storeData(iowaCity3,"IC3");
-storeData(coralville1,"CV1");
-storeData(northLiberty1,"NL1");
+simulateAndDisplayStoreData(iowaCity1,"IC1");
+simulateAndDisplayStoreData(iowaCity2,"IC2");
+simulateAndDisplayStoreData(iowaCity3,"IC3");
+simulateAndDisplayStoreData(coralville1,"CV1");
+simulateAndDisplayStoreData(northLiberty1,"NL1");
